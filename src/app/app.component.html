@@ -1,4 +1,39 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<!-- <app-navbar></app-navbar> -->
+<div class="card text-center">
+    <div class="card-header  d-flex justify-content-between">
+      <div class="nav nav-tabs card-header-tabs float-left">
+        <li class="nav-item">
+          <a class="nav-link "routerLink = '/home'>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink = '/product-list'>Product Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink = '/aboutMe'>About me</a>
+        </li>
+      </div>
+      <div class="float-right mx-3">
+        <i class="fa-solid fa-user-secret"></i>
+        <p routerLink = "/user">Profile</p>
+      </div>
+    </div>
+    <div class="card-body">
+            <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    <div class="container d-flex justify-content-center flex-sm-row">
+        <ng-container class="row" *ngFor ="let icon of icons">
+            <div class="col-md-1 col-sm-1">
+                <i class="{{icon.class}}"></i>
+            </div>
+        </ng-container>
 
-<!-- <app-footer></app-footer> -->
+    </div>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" >© 2020 Copyright:
+        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+  </div>
+
+

@@ -6,6 +6,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import {ProductDetailComponent } from './product-detail/product-detail.component';
 const routes: Routes = [
   {path: '', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+  {path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
   {path: 'home', component: HomeComponent},
   {path: 'product-list', component: ProductListComponent},
   {path: 'aboutMe', component: AboutMeComponent}, 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -16,6 +15,8 @@ import { LoginModule } from './login/login.module';
 import { AuthInterceptorInterceptor } from './service/interceptor/auth-interceptor.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './store/reducers/product.reducer';
+import { SharedModule } from './shared/shared.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { productReducer } from './store/reducers/product.reducer';
     HomeComponent,
     ProductListComponent,
     AboutMeComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,8 @@ import { productReducer } from './store/reducers/product.reducer';
     ReactiveFormsModule,
     FormsModule,
     LoginModule,
+    SharedModule,
+    UserModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

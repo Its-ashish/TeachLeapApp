@@ -1,39 +1,49 @@
 <!-- <app-navbar></app-navbar> -->
-<div class="card text-center">
-    <div class="card-header  d-flex justify-content-between">
-      <div class="nav nav-tabs card-header-tabs float-left">
-        <li class="nav-item">
-          <a class="nav-link "routerLink = '/home'>Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " routerLink = '/product-list'>Product Page</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink = '/aboutMe'>About me</a>
-        </li>
-      </div>
-      <div class="float-right mx-3">
-        <i class="fa-solid fa-user-secret"></i>
-        <p routerLink = "/user">Profile</p>
-      </div>
+<div class="card text-center" >
+  <div class="card-header  d-flex justify-content-between">
+    <div class="nav nav-tabs card-header-tabs float-left">
+      <li class="nav-item ">
+        <a class="nav-link" [ngClass]="{active: clicked[0]}" (click)="clickAction($event)" routerLink='/home'>Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " [ngClass]="{active: clicked[1]}" (click)="clickAction($event)"
+          routerLink='/product-list'>Product Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " [ngClass]="{active: clicked[2]}" (click)="clickAction($event)" routerLink='/aboutMe'>About
+          me</a>
+      </li>
     </div>
-    <div class="card-body">
-            <router-outlet></router-outlet>
+    <div class="nav nav-tabs card-header-tabs float-right">
+      <div class="nav-item float-right" [ngClass]="{active: clicked[2]}" (click)="clickAction($event)">
+        <div class="dropdown">
+          <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-regular fa-circle-user"></i>
+          </a>
+          <div class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Sign Out</a></li>
+            <li><a class="dropdown-item" routerLink="/user">Profile</a></li>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="card-footer text-muted">
-    <div class="container d-flex justify-content-center flex-sm-row">
-        <ng-container class="row" *ngFor ="let icon of icons">
-            <div class="col-md-1 col-sm-1">
-                <i class="{{icon.class}}"></i>
-            </div>
-        </ng-container>
+</div>
+<div style="position: absolute;top: 52px;right: 0px;left: 0px;">
+  <router-outlet></router-outlet>
+</div>
+<div class="card-footer text-muted" style="position: absolute; bottom: 0; width: 100%;">
+  <div class="container d-flex justify-content-center flex-sm-row">
+    <ng-container class="row" *ngFor="let icon of icons">
+      <div class="col-md-1 col-sm-1">
+        <i class="{{icon.class}}"></i>
+      </div>
+    </ng-container>
 
-    </div>
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3" >© 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-    </div>
   </div>
-
-
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  </div>
+</div>

@@ -11,7 +11,9 @@ justify-content: center;margin-top: 3px;margin-bottom: 8px;
             </a>
             <div class="dropdown-menu" aria-labelledby="triggerId">
                 <a class="dropdown-item">
-                    <input type="file" (change)="processImage($event)">
+                    <form>
+                        <input type="file" (change)="processImage($event)">
+                    </form>
                 </a>
             </div>
         </div>

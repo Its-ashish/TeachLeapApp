@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadServiceService } from 'src/app/service/file-upload-service.service';
 
 @Component({
@@ -8,19 +7,16 @@ import { FileUploadServiceService } from 'src/app/service/file-upload-service.se
   styleUrls: ['./upload-image.component.css']
 })
 export class UploadImageComponent implements OnInit {
-  formData: FormGroup =  new FormGroup({});
-
   fileName: any = 'assets/MicrosoftTeams-image (6).png';
   msg:any;
-  constructor(private uploadImageService: FileUploadServiceService, private fb: FormBuilder) { }
+  constructor(private uploadImageService: FileUploadServiceService) { }
 
   ngOnInit(): void {
-    this.formData = this.fb.group({
-      image: ['']
-    })
   }
 
   processImage(e:any){
+    let payload = new FormData();
+    let file: File = e?.target?.files[0];
     if(!e?.target?.files[0]?.type.match(/image\/*/)){
       this.msg = "Not an image";
       return;
@@ -30,11 +26,9 @@ export class UploadImageComponent implements OnInit {
     reader.onload = (e) => {
       this.fileName = reader.result;
     }
-    this.formData.patchValue({
-      image: e?.target?.files[0]
-    })
-    console.log(this.formData, 'hi');
-    this.uploadImageService.uploadImage(this.formData.value).subscribe(res => {
+    payload?.append('file', file);
+    console.log(payload ,'payload');
+    this.uploadImageService.uploadImage(payload).subscribe(res => {
       console.log(res);
     });
   }

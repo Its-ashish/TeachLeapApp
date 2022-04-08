@@ -1,21 +1,5 @@
-<span *ngIf = "msg" style="color: red;padding: 0.3em;display: flex;
-justify-content: center;margin-top: 3px;margin-bottom: 8px;
-">Error: {{msg}}</span>
-<div class="container">
-    <img [src] ="fileName" style="width: 12.5rem;position: relative;display: flex;align-content: stretch;
-   align-items: stretch;" class="rounded-circle" alt="">
-    <span style="left: 11em;position: relative;display: flex;bottom: 3em;z-index: 2;">
-        <div class="dropdown">
-            <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: darkslategrey;">
-                <i class="fa-solid fa-camera fa-xl"></i>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="triggerId">
-                <a class="dropdown-item">
-                    <form>
-                        <input type="file" (change)="processImage($event)">
-                    </form>
-                </a>
-            </div>
-        </div>
-    </span>
+<div *ngIf = 'msg'>{{msg}}</div>
+<div class="wrapper">
+    <img [src] = 'fileName' class="my_img">
+    <input type="file" class="my_file" (change)="processImage($event)">
 </div>

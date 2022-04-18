@@ -18,6 +18,6 @@ export class FileUploadServiceService {
   }
 
   getImage(): Observable<any>{
-    return this.http.get('http://localhost:4000/fetchImage');
+    return this.http.get('http://localhost:4000/retriveImage');
   }
 }

@@ -40,11 +40,11 @@ export class ProductListComponent implements OnInit {
     this.categoryData = this.filter.Category;
     this.produc.subscribe(productList => {
       console.log(productList)
-      if (productList.length > 0) {
+      if (productList.length === 0) {
+        this.getProductList();
+      } else {
         this.productList = productList;
         this.filteredProductList = productList;
-      } else {
-        this.getProductList();
       }
     });
   }
@@ -52,10 +52,16 @@ export class ProductListComponent implements OnInit {
   getProductList()
   {
    this.productListService.getProductList().subscribe(res => {
-     console.log(typeof res);
+     if (res.length === 0) {
+       this.productList = null
+     }
+     else {
+      console.log(typeof res);
       this.productList = res;
       this.filteredProductList = res;
       this.store.dispatch(ADD_PRODUCT_LIST({ productList: this.productList }));
+     }
+     
     });
   }
 
